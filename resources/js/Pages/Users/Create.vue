@@ -1,38 +1,33 @@
 <script setup>
-import { Head, router } from "@inertiajs/vue3";
+import { router } from "@inertiajs/vue3";
 import { reactive } from "vue";
 
-const form = reactive({
-    first_name: null,
-    last_name: null,
-    email: null,
-})
-
+let form = reactive({
+    first_name: '',
+    last_name: '',
+    email: '',
+});
 function submit() {
     router.post('/users', form)
 }
 </script>
 
 <template>
-    <div>
-
-        <head title="Create User"></head>
-
-        <form @submit.prevent="submit">
-
-            <label for="first_name">First name:</label>
-            <input id="first_name" v-model="form.first_name" />
-
-            <label for="last_name">Last name:</label>
-            <input id="last_name" v-model="form.last_name" />
-
-            <label for="email">Email:</label>
-            <input id="email" v-model="form.email" />
-
-            <button type="submit">Submit</button>
-        </form>
-
-    </div>
+    <form @submit.prevent="submit">
+        <div>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" v-model="form.first_name">
+        </div>
+        <div>
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" v-model="form.last_name">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" v-model="form.email">
+        </div>
+        <button>submit</button>
+    </form>
 </template>
 
 <style scoped></style>

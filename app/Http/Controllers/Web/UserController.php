@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return inertia('Users/Create');
+        return inertia('Users/Create', ['token' => csrf_token()]);
     }
 
     /**
